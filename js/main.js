@@ -9,6 +9,7 @@ var markers = [];
  */
 document.addEventListener('DOMContentLoaded', (event) => {
   //initMap(); // added
+  updateRestaurants();
   fetchNeighborhoods();
   fetchCuisines();
 });
@@ -99,7 +100,7 @@ initMap = () => {
     center: loc,
     scrollwheel: false
   });
-  updateRestaurants();
+  //updateRestaurants();
 };
 
 /**
