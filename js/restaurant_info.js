@@ -4,15 +4,8 @@ var newMap;
 /**
  * Initialize map as soon as the page is loaded.
  */
-document.addEventListener('DOMContentLoaded', (event) => {  
+document.addEventListener('DOMContentLoaded', (event) => {
   //initMap();
-});
-const rImg = document.getElementById('restaurant-img');
-rImg.onload = () => {
-  document.getElementById('map').style.height = rImg.clientHeight + 'px';
-};
-window.addEventListener("resize", () => {
-  document.getElementById('map').style.height = rImg.clientHeight + 'px';
 });
 /**
  * Initialize leaflet map
@@ -92,9 +85,20 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   const address = document.getElementById('restaurant-address');
   address.innerHTML = '<strong>Visit us at:</strong><br>' + restaurant.address;
 
-  const image = document.getElementById('restaurant-img');
-  image.className = 'restaurant-img';
-  image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  //const image = document.getElementById('restaurant-img');
+  //image.className = 'restaurant-img';
+  const imgf = DBHelper.imageUrlForRestaurant(restaurant).split('.');
+  let img_1x = `${imgf[0]}-1x.${imgf[1]}`;
+  let img_2x = `${imgf[0]}-2x.${imgf[1]}`;
+  let img_hd = `${imgf[0]}-hd.${imgf[1]}`;
+  const pic = document.getElementById('restaurant-pic');
+  var str =  `<source media="(max-width: 767px)" srcset="${img_1x} 1x, ${img_2x} 2x">
+              <source media="(min-width: 768px)" srcset="${img_2x} 1x, ${img_hd} 2x">
+              <img id="restaurant-img" src="${img_1x}" alt="${restaurant.name}">`;
+
+  pic.innerHTML = str;
+  //image.src = img_1x;
+  //image.alt = restaurant.name;
 
   const cuisine = document.getElementById('restaurant-cuisine');
   cuisine.innerHTML = restaurant.cuisine_type;
@@ -108,6 +112,14 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   }
   // fill reviews
   fillReviewsHTML();
+  // map resize using image
+  const rImg = document.getElementById('restaurant-img');
+  rImg.onload = () => {
+    document.getElementById('map').style.height = rImg.clientHeight + 'px';
+  };
+  window.addEventListener("resize", () => {
+    document.getElementById('map').style.height = rImg.clientHeight + 'px';
+  });
 };
 
 /**
