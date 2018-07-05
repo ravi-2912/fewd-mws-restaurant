@@ -11,7 +11,9 @@ const rImg = document.getElementById('restaurant-img');
 rImg.onload = () => {
   document.getElementById('map').style.height = rImg.clientHeight + 'px';
 };
-
+window.addEventListener("resize", () => {
+  document.getElementById('map').style.height = rImg.clientHeight + 'px';
+});
 /**
  * Initialize leaflet map
  */
