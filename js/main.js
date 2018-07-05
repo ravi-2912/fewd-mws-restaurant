@@ -149,54 +149,72 @@ resetRestaurants = (restaurants) => {
  */
 fillRestaurantsHTML = (restaurants = self.restaurants) => {
   const ul = document.getElementById('restaurants-list');
-  restaurants.forEach(restaurant => {
-    ul.append(createRestaurantHTML(restaurant));
-  });
+  //restaurants.forEach(restaurant => {
+  //  ul.append(createRestaurantHTML(restaurant));
+  //});
+  var str = `${restaurants.map(restaurant =>
+    `<li class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+          <div class="col p-0 card">
+                <img id="restaurant-img" src="${DBHelper.imageUrlForRestaurant(restaurant)}" alt="${restaurant.name}">
+                <div class="content">
+                      <h1>${restaurant.name}</h1>
+                      <p>${restaurant.neighborhood}</p>
+                      <address>${restaurant.address}</address>
+                      <a class="button" href="${DBHelper.urlForRestaurant(restaurant)}">View Details</a>
+                </div>
+          </div>
+    </li>`
+  ).join('')}`;
+  ul.innerHTML = str;
   addMarkersToMap();
 };
 
 /**
  * Create restaurant HTML.
  */
-createRestaurantHTML = (restaurant) => {
+/*createRestaurantHTML = (restaurant) => {
+  const imgSrc = DBHelper.imageUrlForRestaurant(restaurant);
+  const name = restaurant.name;
+  const neighborhood = restaurant.neighborhood;
+  const address = restaurant.address;
+  const aHref = DBHelper.urlForRestaurant(restaurant);
+
   const li = document.createElement('li');
-  li.className = 'card';
-  li.classList.add('col-xs-12', 'col-sm-6', 'col-md-3', 'col-lg-4', 'col', 'p-0');
+  li.classList.add('col-xs-12', 'col-sm-6', 'col-md-4', 'col-lg-4');
 
   const colDiv = document.createElement('div');
-  //colDiv.className = 'col';
-  //colDiv.classList.add('p-0');
+  colDiv.classList.add('col', 'p-0', 'card');
 
   const image = document.createElement('img');
-  image.className = 'restaurant-img';
-  image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  image.id = 'restaurant-img';
+  image.src = imgSrc;
   colDiv.append(image);
 
   const div = document.createElement('div');
   div.className = 'content';
 
-  const name = document.createElement('h1');
-  name.innerHTML = restaurant.name;
-  div.append(name);
+  const Name = document.createElement('h1');
+  Name.innerHTML = name;
+  div.append(Name);
 
-  const neighborhood = document.createElement('p');
-  neighborhood.innerHTML = restaurant.neighborhood;
-  div.append(neighborhood);
+  const neighbor = document.createElement('p');
+  neighbor.innerHTML = neighborhood;
+  div.append(neighbor);
 
-  const address = document.createElement('p');
-  address.innerHTML = restaurant.address;
-  div.append(address);
+  const addres = document.createElement('p');
+  addres.innerHTML = address;
+  div.append(addres);
 
   const more = document.createElement('a');
   more.innerHTML = 'View Details';
-  more.href = DBHelper.urlForRestaurant(restaurant);
+  more.href = aHref;
   div.append(more);
 
   colDiv.append(div);
   li.append(colDiv);
 
   return li;
-};
+};*/
 
 /**
  * Add markers for current restaurants to the map.

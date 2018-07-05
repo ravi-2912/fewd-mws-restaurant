@@ -7,6 +7,10 @@ var newMap;
 document.addEventListener('DOMContentLoaded', (event) => {  
   //initMap();
 });
+const rImg = document.getElementById('restaurant-img');
+rImg.onload = () => {
+  document.getElementById('map').style.height = rImg.clientHeight + 'px';
+};
 
 /**
  * Initialize leaflet map
@@ -84,7 +88,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   name.innerHTML = restaurant.name;
 
   const address = document.getElementById('restaurant-address');
-  address.innerHTML = restaurant.address;
+  address.innerHTML = '<strong>Visit us at:</strong><br>' + restaurant.address;
 
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img';
@@ -92,6 +96,9 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 
   const cuisine = document.getElementById('restaurant-cuisine');
   cuisine.innerHTML = restaurant.cuisine_type;
+
+  const neighborhood = document.getElementById('restaurant-neighborhood');
+  neighborhood.innerHTML = restaurant.neighborhood;
 
   // fill operating hours
   if (restaurant.operating_hours) {
@@ -127,6 +134,7 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
 fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   const container = document.getElementById('reviews-container');
   const title = document.createElement('h2');
+  title.classList.add('col-xs-12', 'col-sm-12', 'col', 'mb-0', 'pb-0', 't-l');
   title.innerHTML = 'Reviews';
   container.appendChild(title);
 
@@ -137,9 +145,21 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
     return;
   }
   const ul = document.getElementById('reviews-list');
-  reviews.forEach(review => {
+  /*reviews.forEach(review => {
     ul.appendChild(createReviewHTML(review));
-  });
+  });*/
+  var str = `${reviews.map(review =>
+    `<li class="col-xs-12 col-sm-6 t-l">
+          <div class="col p-0">
+              <p class="t-l review-head">${review.name}<span style="float: right;">${review.date}</span></p>
+              <div class="t-l block">
+                  <p class="mb-0 rating">Rating: ${review.rating}</p>
+                  <p>${review.comments}</p>
+              </div>
+        </div>
+    </li>`
+  ).join('')}`;
+  ul.innerHTML = str;
   container.appendChild(ul);
 };
 
@@ -163,6 +183,8 @@ createReviewHTML = (review) => {
   const comments = document.createElement('p');
   comments.innerHTML = review.comments;
   li.appendChild(comments);
+
+  li.classList.add('col');
 
   return li;
 };
