@@ -157,7 +157,7 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
     let img_1x = `${imgf[0]}-1x.${imgf[1]}`;
     let img_2x = `${imgf[0]}-2x.${imgf[1]}`;
     let img_hd = `${imgf[0]}-hd.${imgf[1]}`;
-    console.log(img_1x, img_2x);
+
     return  `<li class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
                   <figure class="col p-0 card">
                         <picture>
