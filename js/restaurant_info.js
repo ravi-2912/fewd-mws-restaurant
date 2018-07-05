@@ -147,11 +147,20 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
     return;
   }
   const ul = document.getElementById('reviews-list');
-  /*reviews.forEach(review => {
-    ul.appendChild(createReviewHTML(review));
-  });*/
+  let avgRating = 0;
+  let count = 0;
+  reviews.forEach(review => {
+    avgRating += review.rating;
+    count += 1;
+  });
+  const avgRatEl = document.getElementById('avg-rating');
+  avgRatEl.innerText = (avgRating/count).toFixed(1);
+  const starEl = document.getElementById('stars-percent');
+  let starPercent = (100*avgRating/count/5).toFixed(1);
+  starEl.setAttribute('style', `width: ${starPercent}%`);
+
   var str = `${reviews.map(review =>
-    `<li class="col-xs-12 col-sm-6 t-l">
+    `<li class="col-xs-12 col-sm-12 t-l">
           <div class="col p-0">
               <p class="t-l review-head">${review.name}<span style="float: right;">${review.date}</span></p>
               <div class="t-l block">
