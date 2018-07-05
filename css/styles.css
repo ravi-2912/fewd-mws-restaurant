@@ -351,7 +351,7 @@ nav h1 a {
 	text-transform: uppercase;
 }
 #restaurant-address {
-	font-size: 12pt;
+	font-size: 14pt;
 	margin: 10px 0px;
 	text-align: center;
 	font-style: normal;
@@ -359,6 +359,7 @@ nav h1 a {
 #restaurant-hours {
 	border-collapse: collapse;
 	margin: auto !important;
+	width: 80%;
 }
 #restaurant-hours td {
 	color: #666;
@@ -375,7 +376,8 @@ nav h1 a {
 #restaurant-hours td,
 #restaurant-hours th,
 #restaurant-hours tr {
-    padding: 6px 6px 6px 12px;
+	padding: 6px 12px;
+
 }
 /* ====================== Reviews ====================== */
 #reviews-container h2 {
