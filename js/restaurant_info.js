@@ -145,16 +145,18 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
 	 * Create reviews
 	 */
 	var str = `${reviews.map(review =>
-	`<li class="col-xs-12 col-sm-12 t-l">
-		  <div class="col p-0">
-			  <p class="t-l review-head">${review.name}<span style="float: right;">${review.date}</span></p>
-			  <div class="t-l block">
-				  <p class="mb-0 rating">Rating: ${review.rating}</p>
-				  <p>${review.comments}</p>
-			  </div>
-		  </div>
-	</li>`
-  ).join('')}`;
+								`<li class="col-xs-12 col-sm-12 t-l">
+									<div class="col p-0">
+										<p class="t-l review-head">
+											${review.name}
+											<span style="float: right;">${review.date}</span>
+										</p>
+										<div class="t-l block">
+											<p class="mb-0 rating">Rating: ${review.rating}</p>
+											<p>${review.comments}</p>
+										</div>
+									</div>
+								</li>`).join('')}`;
 	ul.innerHTML = str;
 	container.appendChild(ul);
 };

@@ -8,7 +8,6 @@ var markers = [];
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
  */
 document.addEventListener('DOMContentLoaded', (event) => {
-	//initMap(); // added
 	updateRestaurants();
 	fetchNeighborhoods();
 	fetchCuisines();
@@ -82,7 +81,6 @@ window.initMap = () => {
 		center: loc,
 		scrollwheel: false
 	});
-	//updateRestaurants();
 };
 
 /**
@@ -131,9 +129,6 @@ resetRestaurants = (restaurants) => {
  */
 fillRestaurantsHTML = (restaurants = self.restaurants) => {
 	const ul = document.getElementById('restaurants-list');
-	//restaurants.forEach(restaurant => {
-	//  ul.append(createRestaurantHTML(restaurant));
-	//});
 	var str = `${restaurants.map(restaurant => {
 	let imgf = DBHelper.imageUrlForRestaurant(restaurant).split('.');
 	let img_1x = `${imgf[0]}-1x.${imgf[1]}`;
