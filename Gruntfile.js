@@ -8,10 +8,14 @@ module.exports = function(grunt) {
                     /*engine: 'im',*/
                     sizes: [{
                         name: "1x",
-                        width: 400,
+                        width: 300,
                         quality: 90
                     }, {
                         name: "2x",
+                        width: 600,
+                        quality: 90
+                    }, {
+                        name: "hd",
                         width: 800,
                         quality: 90
                     }]
