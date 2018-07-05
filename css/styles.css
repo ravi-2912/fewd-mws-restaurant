@@ -301,13 +301,12 @@ nav h1 a {
 	letter-spacing: 1px;
 	text-align: center;
 	text-transform: uppercase;
-	margin-top: 15px;
 }
 /* ====================== Breadcrumbs ====================== */
 #breadcrumb {
     padding: 10px 40px 16px;
     list-style: none;
-    background-color: #eee;
+    background-color: #ddd;
 	font-size: 17px;
 	text-align: left;
 }
@@ -354,10 +353,12 @@ nav h1 a {
 #restaurant-address {
 	font-size: 12pt;
 	margin: 10px 0px;
-	text-align: left;
+	text-align: center;
+	font-style: normal;
 }
 #restaurant-hours {
 	border-collapse: collapse;
+	margin: auto !important;
 }
 #restaurant-hours td {
 	color: #666;
