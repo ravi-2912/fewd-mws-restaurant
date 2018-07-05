@@ -156,7 +156,7 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
                   <p class="mb-0 rating">Rating: ${review.rating}</p>
                   <p>${review.comments}</p>
               </div>
-        </div>
+          </div>
     </li>`
   ).join('')}`;
   ul.innerHTML = str;
@@ -166,6 +166,7 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
 /**
  * Create review HTML and add it to the webpage.
  */
+/*
 createReviewHTML = (review) => {
   const li = document.createElement('li');
   const name = document.createElement('p');
@@ -187,7 +188,7 @@ createReviewHTML = (review) => {
   li.classList.add('col');
 
   return li;
-};
+};*/
 
 /**
  * Add restaurant name to the breadcrumb navigation menu
