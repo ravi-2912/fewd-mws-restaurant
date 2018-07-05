@@ -405,3 +405,43 @@ nav h1 a {
 	padding: 0 15px 1px;
 	border-radius: 0 0 15px 0;
 }
+.rating {
+	background-color: orange;
+	border-radius: 5px;
+	color: #fff;
+	display: inline-block;
+	font-size: 10pt;
+	padding: 8px 10px 8px;
+	text-transform: uppercase;
+}
+#avg-rating {
+	font-size: 58pt;
+	margin-bottom: 0;
+	margin-top: 30px;
+}
+.star-ratings-css {
+	unicode-bidi: bidi-override;
+	color: #c5c5c5;
+	font-size: 50px;
+	height: 50px;
+	width: 200px;
+	margin: 0 auto;
+	position: relative;
+	padding: 0;
+	text-shadow: 0px 1px 0 #a2a2a2;
+}
+.star-ratings-css-top {
+	color: #e7711b;
+	padding: 0;
+	position: absolute;
+	z-index: 1;
+	display: block;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+}
+.star-ratings-css-bottom {
+	padding: 0;
+	display: block;
+	z-index: 0;
+}
