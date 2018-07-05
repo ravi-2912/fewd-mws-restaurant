@@ -197,6 +197,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
     border-radius: 20px; /* 25px rounded corners */
 	min-width: 200px !important;
 	text-align: left;
+	background-color: white;
 }
 /* On mouse-over, add a deeper shadow */
 .card:hover {
