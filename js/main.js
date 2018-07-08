@@ -147,10 +147,12 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
 						</picture>
 						<figcaption class="content">
 							<h1>${restaurant.name}</h1>
+						</figcaption>
+						<div class="content">
 							<p>${restaurant.neighborhood}</p>
 							<address>${restaurant.address}</address>
-							<a class="button" href="${DBHelper.urlForRestaurant(restaurant)}">View Details</a>
-						</figcaption>
+							<a role="button" aria-label="${restaurant.name}" class="button" href="${DBHelper.urlForRestaurant(restaurant)}">View Details</a>
+						</div>
 				  </figure>
 			</li>`;
   }).join('')}`;
