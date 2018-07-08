@@ -480,9 +480,10 @@ nav h1 a {
 }
 
 #restaurants-list .button {
-	background-color: orange;
+	background-color: white;
+	border: 2px solid orange;
 	border-radius: 5px;
-	color: #fff;
+	color: orange;
 	display: inline-block;
 	font-size: 10pt;
 	margin: 15px 0 0;
