@@ -69,11 +69,26 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 
 	pic.innerHTML = str;
 
+	const figcaption = document.getElementById('restaurant-caption');
+	figcaption.innerText = `${restaurant.name} restaurant, ${restaurant.cuisine_type} cuisine`;
+
 	const cuisine = document.getElementById('restaurant-cuisine');
 	cuisine.innerHTML = restaurant.cuisine_type;
 
 	const neighborhood = document.getElementById('restaurant-neighborhood');
 	neighborhood.innerHTML = restaurant.neighborhood;
+
+	const mapEl = document.getElementById('map-container');
+	mapEl.setAttribute('aria-label', `Google Map showing ${restaurant.name} restaurant marker`);
+
+	const details = document.getElementById('restaurant-details');
+	details.setAttribute('aria-label', `Address and opening times for ${restaurant.name} restuarant`);
+
+	const avgratingcontainer = document.getElementById('avg-rating-container');
+	avgratingcontainer.setAttribute('aria-label', `Average rating for ${restaurant.name} restaurant`);
+
+	const resviewcontainer = document.getElementById('reviews-container');
+	resviewcontainer.setAttribute('aria-label', `Customer reviews for ${restaurant.name} restaurant`);
 
 	// fill operating hours
 	if (restaurant.operating_hours) {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 	<meta charset="utf-8">
@@ -19,18 +19,18 @@
 		<header class="row">
 			<nav class="col-xs-12 col-sm-12">
 				<h1 class="col">
-					<a href="/">Restaurant Reviews</a>
+					<a href="/">Restaurant Reviews <span class="sr-only">Home page</span></a>
 				</h1>
-			</nav>
-			<div class="col-xs-12 col-sm-12">
-				<div class="col m-0 p-0">
-					<ul id="breadcrumb" class="m-0">
-						<li>
-							<a href="/">Home</a>
-						</li>
-					</ul>
+				<div aria-label="Breadcrumb" role="navigation" class="col-xs-12 col-sm-12">
+					<div class="col m-0 p-0">
+						<ul id="breadcrumb" class="m-0">
+							<li>
+								<a href="/">Home</a>
+							</li>
+						</ul>
+					</div>
 				</div>
-			</div>
+			</nav>
 		</header>
 
 		<main id="maincontent" class="grid">
@@ -40,10 +40,11 @@
 				</div>
 			</div>
 			<div class="row container">
-				<section id="restaurant-container" class="col-xs-12 col-sm-6">
+				<section id="restaurant-container" class="col-xs-12 col-sm-6" aria-labelledby="restaurant-caption">
 					<div class="col m-0 p-0">
 						<figure class="m-0">
 							<picture id="restaurant-pic"></picture>
+							<figcaption id="restaurant-caption" class="sr-only"></figcaption>
 						</figure>
 						<p id="restaurant-cuisine"></p>
 					</div>
@@ -56,7 +57,7 @@
 				</section>
 			</div>
 			<div class="row container">
-				<div class="col-xs-12 col-sm-6">
+				<section id="restaurant-details" class="col-xs-12 col-sm-6">
 					<div class="col py-0">
 						<address id="restaurant-address"></address>
 						<table id="restaurant-hours">
@@ -66,10 +67,10 @@
 							</tr>
 						</table>
 					</div>
-				</div>
-				<div class="col-xs-12 col-sm-6">
+				</section>
+				<section id="avg-rating-container" class="col-xs-12 col-sm-6">
 					<div class="col my-0 py-0">
-						<h1>Average Rating</h1>
+						<h1 id="avg-rating-head">Average Rating</h1>
 						<p id="avg-rating"></p>
 						<div class="star-ratings-css">
 							<div id="stars-percent" class="star-ratings-css-top">
@@ -88,7 +89,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</section>
 			</div>
 			<section id="reviews-container" class="container">
 				<ul id="reviews-list" class="row"></ul>
@@ -98,10 +99,14 @@
 		<footer id="footer" class="row">
 			<div class="col-xs-12 col-sm-12">
 				<div class="col">
-					Copyright (c) 2017
-					<a href="/">
-						<strong>Restaurant Reviews</strong>
-					</a> All Rights Reserved.
+					<p>
+						Copyright (c) 2017
+						<a href="/">
+							<strong>Restaurant Reviews</strong>
+							<span class="sr-only">Home page</span>
+						</a>
+						All Rights Reserved.
+					</p>
 				</div>
 			</div>
 		</footer>
