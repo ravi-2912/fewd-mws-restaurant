@@ -648,6 +648,8 @@ nav h1 a {
 	text-transform: uppercase;
 }
 
+/* ====================== Average Rating Stars ====================== */
+
 #avg-rating {
 	font-size: 58pt;
 	margin-bottom: 0;
