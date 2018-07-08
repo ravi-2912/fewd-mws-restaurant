@@ -493,11 +493,22 @@ nav h1 a {
 	text-transform: uppercase;
 }
 
+#restaurants-list .button:hover,
+#restaurants-list .button:focus {
+	background-color: orange;
+	color: white;
+	outline: 0;
+	box-shadow: 0 0 8px 3px rgba(0, 0, 0, 0.8);
+}
+
 /* ====================== Footer ====================== */
 
 #footer {
 	background-color: #444;
-	color: #aaa;
+}
+
+#footer p {
+	color: white;
 	font-size: 8pt;
 	letter-spacing: 1px;
 	text-align: center;
