@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 	updateRestaurants();
 	fetchNeighborhoods();
 	fetchCuisines();
+	registerWorker();
 });
 
 /**
@@ -171,5 +172,19 @@ addMarkersToMap = (restaurants = self.restaurants) => {
 			window.location.href = marker.url;
 		});
 		self.markers.push(marker);
+	});
+};
+
+/**
+ * Service worker registration
+ */
+registerWorker = () => {
+	if(!navigator.serviceWorker) {
+		return;
+	}
+	navigator.serviceWorker.register('../sw.js').then(reg => {
+		console.log('Registration worked');
+	}).catch(() => {
+		console.log('Registration failed');
 	});
 };
