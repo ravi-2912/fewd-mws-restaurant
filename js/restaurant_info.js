@@ -2,6 +2,14 @@ let restaurant;
 var newMap;
 
 /**
+ * Register worker as soon as the page is loaded.
+ */
+document.addEventListener('DOMContentLoaded', (event) => {
+	registerWorker();
+});
+
+
+/**
  * Initialize map as soon as the page is loaded.
  */
 window.initMap = () => {
@@ -200,4 +208,17 @@ getParameterByName = (name, url) => {
 	if (!results[2])
 		return '';
 	return decodeURIComponent(results[2].replace(/\+/g, ' '));
+};
+
+/**
+ * Service worker registration
+ */
+registerWorker = () => {
+	if(!navigator.serviceWorker) return;
+
+	navigator.serviceWorker.register('sw.js').then(() => {
+		console.log('Registration worked');
+	}).catch(() => {
+		console.log('Registration failed');
+	});
 };
