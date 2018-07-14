@@ -8,7 +8,7 @@ var markers = [];
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
  */
 document.addEventListener('DOMContentLoaded', (event) => {
-	updateRestaurants();
+	initMap();
 	fetchNeighborhoods();
 	fetchCuisines();
 	registerWorker();
@@ -72,6 +72,27 @@ fillCuisinesHTML = (cuisines = self.cuisines) => {
 /**
  * Initialize leaflet map, called from HTML.
  */
+/**
+ * Initialize leaflet map, called from HTML.
+ */
+initMap = () => {
+	self.newMap = L.map('map', {
+		center: [40.722216, -73.987501],
+		zoom: 12,
+		scrollWheelZoom: false
+	});
+	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
+		mapboxToken: 'pk.eyJ1IjoicmF2aS0yOTEyIiwiYSI6ImNqamx5YnlmdTJ5dmMzcXAyaXJxcjhtN2EifQ.d3oExqPedc_oVHTgvqkfXg',
+		maxZoom: 18,
+		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+			'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+		id: 'mapbox.streets'
+	}).addTo(newMap);
+
+	updateRestaurants();
+};
+/*
 window.initMap = () => {
 	let loc = {
 		lat: 40.722216,
@@ -82,7 +103,9 @@ window.initMap = () => {
 		center: loc,
 		scrollwheel: false
 	});
+	updateRestaurants();
 };
+*/
 
 /**
  * Update page and map for current restaurants.
@@ -130,7 +153,7 @@ resetRestaurants = (restaurants) => {
  */
 fillRestaurantsHTML = (restaurants = self.restaurants) => {
 	const ul = document.getElementById('restaurants-list');
-	var str = 	`${restaurants.map(restaurant => {
+	var str = `${restaurants.map(restaurant => {
 					let imgf = DBHelper.imageUrlForRestaurant(restaurant).split('.');
 					let img_1x = `${imgf[0]}-1x.${imgf[1]}`;
 					let img_2x = `${imgf[0]}-2x.${imgf[1]}`;
@@ -164,7 +187,8 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
 /**
  * Add markers for current restaurants to the map.
  */
-addMarkersToMap = (restaurants = self.restaurants) => {
+/*
+ addMarkersToMap = (restaurants = self.restaurants) => {
 	restaurants.forEach(restaurant => {
 		// Add marker to the map
 		const marker = DBHelper.mapMarkerForRestaurant(restaurant, self.map);
@@ -173,13 +197,26 @@ addMarkersToMap = (restaurants = self.restaurants) => {
 		});
 		self.markers.push(marker);
 	});
+};*/
+
+addMarkersToMap = (restaurants = self.restaurants) => {
+	restaurants.forEach(restaurant => {
+		// Add marker to the map
+		const marker = DBHelper.mapMarkerForRestaurant(restaurant, self.newMap);
+		marker.on("click", onClick);
+
+		function onClick() {
+			window.location.href = marker.options.url;
+		}
+		self.markers.push(marker);
+	});
 };
 
 /**
  * Service worker registration
  */
 registerWorker = () => {
-	if(!navigator.serviceWorker) {
+	if (!navigator.serviceWorker) {
 		return;
 	}
 	navigator.serviceWorker.register('../sw.js').then(reg => {
