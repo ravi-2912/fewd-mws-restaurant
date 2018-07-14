@@ -5,8 +5,8 @@ var newMap;
  * Register worker as soon as the page is loaded.
  */
 document.addEventListener('DOMContentLoaded', (event) => {
-	initMap();
 	registerWorker();
+	initMap();
 });
 
 /**
