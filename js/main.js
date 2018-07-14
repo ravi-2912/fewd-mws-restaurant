@@ -8,6 +8,7 @@ var markers = [];
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
  */
 document.addEventListener('DOMContentLoaded', (event) => {
+	initMap();
 	updateRestaurants();
 	fetchNeighborhoods();
 	fetchCuisines();
@@ -158,7 +159,7 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
 			</li>`;
   }).join('')}`;
 	ul.innerHTML = str;
-	addMarkersToMap();
+	//addMarkersToMap();
 };
 
 /**
