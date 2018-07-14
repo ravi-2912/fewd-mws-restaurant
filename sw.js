@@ -20,7 +20,7 @@ self.addEventListener('install', event => {
     );
 });
 
-self.addEventListener('activate', e => {
+self.addEventListener('activate', event => {
     event.waitUntil(
         caches.keys().then(cacheNames => {
             return Promise.all(
@@ -34,10 +34,10 @@ self.addEventListener('activate', e => {
     );
 });
 
-self.addEventListener('fetch', (evt) => {
-    evt.respondWith(
-        caches.match(evt.request, {ignoreSearch: true}).then(response => {
-            return response || fetch(evt.request);
+self.addEventListener('fetch', (event) => {
+    event.respondWith(
+        caches.match(event.request, {ignoreSearch: true}).then(response => {
+            return response || fetch(event.request);
         })
     );
 });
