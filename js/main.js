@@ -130,33 +130,33 @@ resetRestaurants = (restaurants) => {
  */
 fillRestaurantsHTML = (restaurants = self.restaurants) => {
 	const ul = document.getElementById('restaurants-list');
-	var str = `${restaurants.map(restaurant => {
-	let imgf = DBHelper.imageUrlForRestaurant(restaurant).split('.');
-	let img_1x = `${imgf[0]}-1x.${imgf[1]}`;
-	let img_2x = `${imgf[0]}-2x.${imgf[1]}`;
-	let img_hd = `${imgf[0]}-hd.${imgf[1]}`;
+	var str = 	`${restaurants.map(restaurant => {
+					let imgf = DBHelper.imageUrlForRestaurant(restaurant).split('.');
+					let img_1x = `${imgf[0]}-1x.${imgf[1]}`;
+					let img_2x = `${imgf[0]}-2x.${imgf[1]}`;
+					let img_hd = `${imgf[0]}-hd.${imgf[1]}`;
 
-	/**
-	 * Create restaurant HTML.
-	 */
-	return  `<li class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-				  <figure class="col p-0 card">
-						<picture>
-							<source media="(max-width: 767px)" srcset="${img_1x} 1x, ${img_2x} 2x">
-							<source media="(min-width: 768px)" srcset="${img_2x} 1x, ${img_hd} 2x">
-							<img id="restaurant-img" src="${img_1x}" alt="${restaurant.name}">
-						</picture>
-						<figcaption class="content">
-							<h1>${restaurant.name}</h1>
-						</figcaption>
-						<div class="content">
-							<p>${restaurant.neighborhood}</p>
-							<address>${restaurant.address}</address>
-							<a role="button" aria-label="${restaurant.name}" class="button" href="${DBHelper.urlForRestaurant(restaurant)}">View Details</a>
-						</div>
-				  </figure>
-			</li>`;
-  }).join('')}`;
+					/**
+					 * Create restaurant HTML.
+					 */
+					return  `<li class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+								<figure class="col p-0 card">
+										<picture>
+											<source media="(max-width: 767px)" srcset="${img_1x} 1x, ${img_2x} 2x">
+											<source media="(min-width: 768px)" srcset="${img_2x} 1x, ${img_hd} 2x">
+											<img id="restaurant-img" src="${img_1x}" alt="${restaurant.name}">
+										</picture>
+										<figcaption class="content">
+											<h1>${restaurant.name}</h1>
+										</figcaption>
+										<div class="content">
+											<p>${restaurant.neighborhood}</p>
+											<address>${restaurant.address}</address>
+											<a role="button" aria-label="${restaurant.name}" class="button" href="${DBHelper.urlForRestaurant(restaurant)}">View Details</a>
+										</div>
+								</figure>
+							</li>`;
+				}).join('')}`;
 	ul.innerHTML = str;
 	addMarkersToMap();
 };
