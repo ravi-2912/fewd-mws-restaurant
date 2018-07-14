@@ -159,7 +159,7 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
 			</li>`;
   }).join('')}`;
 	ul.innerHTML = str;
-	//addMarkersToMap();
+	addMarkersToMap();
 };
 
 /**
